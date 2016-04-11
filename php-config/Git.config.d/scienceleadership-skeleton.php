@@ -6,7 +6,7 @@ Git::$repositories['scienceleadership-skeleton'] = [
     'workingBranch' => 'master',
     'localOnly' => true,
     'trees' => [
-        'html-templates/designs/site.tpl',
+        'html-templates/includes/site.branding.tpl',
         'php-config/Git.config.d',
         'php-config/Emergence/People/Person.config.d/notes.php'
     ]
