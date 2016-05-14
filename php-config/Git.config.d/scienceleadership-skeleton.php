@@ -9,6 +9,7 @@ Git::$repositories['scienceleadership-skeleton'] = [
         'html-templates/app/SlateAdmin/ext.tpl',
         'html-templates/includes/site.branding.tpl',
         'php-config/Git.config.d',
-        'php-config/Emergence/People/Person.config.d/notes.php'
+        'php-config/Emergence/People/Person.config.d/notes.php',
+        'php-config/Slate/Progress/Narratives/Report.config.d/sla.php'
     ]
 ];
