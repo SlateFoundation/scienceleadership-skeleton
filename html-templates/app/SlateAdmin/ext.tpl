@@ -13,5 +13,5 @@
 {block js-app-local}
     {$dwoo.parent}
     <script type="text/javascript" src="{$App->getVersionedPath('packages/slate-sbg/build/slate-sbg.js')}"></script>
-    {*<script type="text/javascript" src="{$App->getVersionedPath('packages/tps-narratives/build/tps-narratives.js')}"></script>*}
+    <script type="text/javascript" src="{$App->getVersionedPath('packages/scienceleadership-narratives/build/scienceleadership-narratives.js')}"></script>
 {/block}
