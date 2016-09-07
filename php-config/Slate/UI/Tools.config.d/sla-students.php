@@ -1,6 +1,6 @@
 <?php
 
-if (empty($GLOBALS['Session']) || $GLOBALS['Session']->hasAccountLevel('Staff')) {
+if (empty($GLOBALS['Session']) || !$GLOBALS['Session']->Person || !$GLOBALS['Session']->Person->isA(Slate\People\Student::class)) {
     return;
 }
 
