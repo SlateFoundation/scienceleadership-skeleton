@@ -15,7 +15,3 @@
         </a>
     </div>
 </div>
-
-<div style="padding: 1em; background-color: yellow; text-align: center; font-weight: bold;">
-    This site is a preview of the next major version of Slate, it is synchronized to the live database nightly so <u>any changes you make here will be lost</u>.
-</div>
