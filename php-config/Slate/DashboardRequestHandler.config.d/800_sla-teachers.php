@@ -7,12 +7,12 @@ if (empty($GLOBALS['Session']) || !$GLOBALS['Session']->hasAccountLevel('Staff')
 
 Slate\DashboardRequestHandler::$sources['sla-teachers'] = [
     'For Teachers' => [
-        'Engrade' => 'https://ww3.engrade.com/openid/index.php?from=google&domain=' . \RemoteSystems\GoogleApps::$domain,
 #       ,'Teacher Dashboard' => 'https://teacherdashboard.appspot.com/' . GoogleApps::$domain,
         'Naviance' => 'https://succeed.naviance.com/auth/signin',
         'Login SDP' => 'https://www.philasd.org/login/',
         'Zimbra - SDP email' => 'https://cc.philasd.org/',
-        'ScholarChip - Attendance' => 'https://idserv.scholarchip.com/login.aspx',
-        'Standards Reports (beta)' => '/sbg/teachers'
+        'SDP Report Card Calendar' => 'http://webgui.phila.k12.pa.us/offices/r/report-card-information',
+        'Wifi Login' => 'https://nps-sth1.philasd.org',
+
     ]
 ];
