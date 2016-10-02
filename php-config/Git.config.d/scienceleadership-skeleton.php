@@ -6,6 +6,7 @@ Git::$repositories['scienceleadership-skeleton'] = [
     'workingBranch' => 'master',
     'localOnly' => true,
     'trees' => [
+        'content-blocks',
         'html-templates/app/SlateAdmin/ext.tpl',
         'html-templates/includes/site.branding.tpl',
         'php-config/Git.config.d',
@@ -17,6 +18,7 @@ Git::$repositories['scienceleadership-skeleton'] = [
         'php-config/Slate/UI/Tools.config.d/sla-teachers.php',
         'php-config/Slate/UI/Navigation.config.d',
         'site-root/img/logo.png',
-        'site-root/exports'
+        'site-root/exports',
+        'site-root/sass/site'
     ]
 ];
