@@ -13,23 +13,25 @@ User::$usernameGenerator = [
         $middleNameLength = 0;
 
         do {
-            $username = substr($User->FirstName, 0, $firstNameLength);
-            $username .= substr($User->MiddleName, 0, $middleNameLength);
+            $username = mb_substr($User->FirstName, 0, $firstNameLength, 'utf-8');
+            $username .= mb_substr($User->MiddleName, 0, $middleNameLength, 'utf-8');
             $username .= $User->LastName;
-    
+
+            $username = preg_replace('/\PL/u', '', $username);
+
             if ($User->GraduationYear) {
                 $username .= substr($User->GraduationYear, -2);
             }
 
-            $username = strtolower($username);
+            $username = HandleBehavior::transformText($username, ['lower' => true, 'transliterate' => true]);
 
             if (!User::getByWhere(array_merge($options['domainConstraints'], ['Username' => $username]))) {
                 break;
             }
 
-            if ($middleNameLength < strlen($User->MiddleName)) {
+            if ($middleNameLength < mb_strlen($User->MiddleName, 'utf-8')) {
                 $middleNameLength++;
-            } elseif ($firstNameLength < strlen($User->FirstName)) {
+            } elseif ($firstNameLength < mb_strlen($User->FirstName, 'utf-8')) {
                 $firstNameLength++;
             } else {
                 break;
@@ -39,3 +41,7 @@ User::$usernameGenerator = [
         return $username;
     }
 ];
+
+User::$fallbackUserFinders['LegacyUsername'] = function($username) {
+    return User::getByField('LegacyUsername', $username);
+};
