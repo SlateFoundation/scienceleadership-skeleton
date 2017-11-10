@@ -18,7 +18,6 @@ Git::$repositories['scienceleadership-skeleton'] = [
         'php-config/Slate/UI/Tools.config.d/sla-students.php',
         'php-config/Slate/UI/Tools.config.d/sla-teachers.php',
         'php-config/Slate/UI/Navigation.config.d',
-        'php-config/SlateAdmin.config.d/scienceleadership.php',
         'site-root/img/logo.png',
         'site-root/exports',
         'site-root/sass/site'
