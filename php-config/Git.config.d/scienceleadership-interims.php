@@ -9,7 +9,7 @@ Git::$repositories['scienceleadership-interims'] = [
         'html-templates/scienceleadership-interims/_body.email.tpl',
         'php-config/Git.config.d/scienceleadership-interims.php',
         'php-config/Slate/Progress/SectionInterimReport.config.d/scienceleadership-interims.php',
-        'php-config/SlateAdmin.config.d/scienceleadership-interims.php',
+        'php-config/SlateAdmin/WebApp.config.d/scienceleadership-interims.php',
         'php-migrations/ScienceLeadership/Interims',
         'sencha-workspace/packages/scienceleadership-interims'
     ]
