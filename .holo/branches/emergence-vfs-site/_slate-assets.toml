@@ -1,0 +1,6 @@
+[holomapping]
+files = [
+    "*/**",
+    "!php-config/Git.config.d/",
+    "!sencha-workspace/" # exclude for now, old mapping didn't pull it
+]
