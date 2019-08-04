@@ -1,0 +1,6 @@
+[holosource]
+url = "https://github.com/SlateFoundation/slate"
+ref = "refs/heads/releases/v2"
+
+[holosource.project]
+holobranch = "emergence-vfs-skeleton"
