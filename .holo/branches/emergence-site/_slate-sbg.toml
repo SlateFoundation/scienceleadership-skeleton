@@ -1,0 +1,8 @@
+[holomapping]
+files = [
+    "*/**",
+    "sencha-workspace/packages/**",
+    "sencha-workspace/SlateStandardsBasedGradingTeacher/**",
+
+    "!php-config/Git.config.d/"
+]
