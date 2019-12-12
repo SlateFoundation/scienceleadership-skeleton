@@ -1,3 +1,6 @@
 [holosource]
 url = "https://github.com/SlateFoundation/slate-assets"
 ref = "refs/heads/develop"
+
+[holosource.project]
+holobranch = "emergence-layer"
