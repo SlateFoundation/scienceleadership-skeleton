@@ -1,3 +1,6 @@
 [holosource]
 url = "https://github.com/SlateFoundation/slate-sbg"
 ref = "refs/heads/refactor/app-architecture"
+
+[holosource.project]
+holobranch = "emergence-layer"

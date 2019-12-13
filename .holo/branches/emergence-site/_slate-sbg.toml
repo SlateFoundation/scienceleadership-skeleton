@@ -1,9 +1,2 @@
 [holomapping]
-files = [
-    "*/**",
-    "sencha-workspace/packages/**",
-    "sencha-workspace/SlateStandardsBasedGradingTeacher/**",
-    "!sencha-workspace/workspace.json",
-
-    "!php-config/Git.config.d/"
-]
+files = "**"
