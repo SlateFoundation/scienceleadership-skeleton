@@ -1,6 +1,6 @@
 [holomapping]
+holosource="=>emergence-layer"
 files = [
     "*/**",
-    "!php-config/Git.config.d/",
-    "!sencha-workspace/workspace.json"
+    "!php-config/Git.config.d/"
 ]
