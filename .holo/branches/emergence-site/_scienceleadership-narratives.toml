@@ -1,0 +1,7 @@
+[holomapping]
+files = [
+    "*/**",
+    "!php-config/Git.config.d/",
+    "!sencha-workspace/workspace.json"
+]
+after = "slate-sbg"
