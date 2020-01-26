@@ -1,0 +1,1 @@
+- `sencha-workspace/pages` has been manually deleted in this instance as we need holo-built pages coming down from upstream. We need to move this instance to projection and convert that pages class to an app

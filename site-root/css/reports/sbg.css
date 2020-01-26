@@ -1,0 +1,42 @@
+/* line 4, ../../sass/reports/sbg.scss */
+dt.standards {
+  vertical-align: top;
+}
+
+/* line 9, ../../sass/reports/sbg.scss */
+.standard-worksheet .prompts {
+  border-collapse: collapse;
+  margin: 0 0 1em;
+  page-break-before: avoid;
+  width: 100%;
+}
+/* line 16, ../../sass/reports/sbg.scss */
+.standard-worksheet th, .standard-worksheet td {
+  text-align: left;
+  padding: .5em 0;
+  vertical-align: top;
+}
+/* line 22, ../../sass/reports/sbg.scss */
+.standard-worksheet th {
+  border-bottom: 1px solid #ccc;
+  font-size: .875em;
+  font-weight: normal;
+  letter-spacing: .05em;
+  padding-top: .75em;
+  text-transform: uppercase;
+}
+/* line 31, ../../sass/reports/sbg.scss */
+.standard-worksheet td {
+  border-top: 1px solid #ddd;
+}
+/* line 35, ../../sass/reports/sbg.scss */
+.standard-worksheet .prompt {
+  padding-right: 1em;
+  text-align: left;
+  width: 80%;
+}
+/* line 41, ../../sass/reports/sbg.scss */
+.standard-worksheet .grade {
+  padding-left: 1em;
+  white-space: nowrap;
+}
