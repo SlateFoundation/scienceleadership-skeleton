@@ -43,15 +43,17 @@ jobs:
         # pull latest commit
         curl -X POST \
           --silent \
+          --fail \
           -H "Authorization: Token ${VFS_DEV_TOKEN}" \
           -H "Accept: application/json" \
-          "http://http://skeleton.sla.slatepowered.net//site-admin/sources/scienceleadership-skeleton/pull?fetch=true" \
+          "http://skeleton.sla.slatepowered.net/site-admin/sources/scienceleadership-skeleton/pull?fetch=true" \
           | jq '.'
 
         # sync VFS to git
         curl -X POST \
           --silent \
+          --fail \
           -H "Authorization: Token ${VFS_DEV_TOKEN}" \
           -H "Accept: application/json" \
-          "http://http://skeleton.sla.slatepowered.net//site-admin/sources/scienceleadership-skeleton/sync-to-vfs" \
+          "http://skeleton.sla.slatepowered.net/site-admin/sources/scienceleadership-skeleton/sync-to-vfs" \
           | jq '.'
