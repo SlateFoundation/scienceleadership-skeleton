@@ -28,6 +28,7 @@ class Connector extends \Slate\Connectors\AbstractSpreadsheetConnector implement
     // AbstractConnector overrides
     public static $title = 'Infinite Campus';
     public static $connectorId = 'infinite-campus';
+    public static $getSectionTerm;
 
     public static $studentsGraduationYearGroups = true;
 
@@ -88,6 +89,8 @@ class Connector extends \Slate\Connectors\AbstractSpreadsheetConnector implement
         $config['studentsCsv'] = !empty($_FILES['students']) && $_FILES['students']['error'] === UPLOAD_ERR_OK ? $_FILES['students']['tmp_name'] : null;
         $config['sectionsCsv'] = !empty($_FILES['sections']) && $_FILES['sections']['error'] === UPLOAD_ERR_OK ? $_FILES['sections']['tmp_name'] : null;
         $config['enrollmentsCsv'] = !empty($_FILES['schedules']) && $_FILES['schedules']['error'] === UPLOAD_ERR_OK ? $_FILES['schedules']['tmp_name'] : null;
+
+        $config['autoCreateCourse'] = !empty($requestData['autoCreateCourse']);
 
         return $config;
     }
@@ -223,47 +226,25 @@ class Connector extends \Slate\Connectors\AbstractSpreadsheetConnector implement
         return $teachers;
     }
 
-    protected static function getSectionTerm(IJob $Job, Term $MasterTerm, Section $Section, array $row)
-    {
-        $year = substr($MasterTerm->StartDate, 0, 4);
-
-        switch ($row['TermQuarters']) {
-            case 4:
-                $termHandle = 'y' . $year;
-                break;
-            case 2:
-                $termHandle = 's' . $year . '-' . $row['TermLastQuarter']/2;
-                break;
-            case 1:
-                $termHandle = 'q' . $year . '-' . $row['TermLastQuarter'];
-                break;
-        }
-
-        if (!$Term = Term::getByHandle($termHandle)) {
-            throw new RemoteRecordInvalid(
-                'term-not-found',
-                'Term not found for handle: '.$termHandle,
-                $row,
-                $termHandle
-            );
-        }
-
-        return $Term;
-    }
 
     protected static function getSectionCourse(IJob $Job, Section $Section, array $row)
     {
-        if (empty($row['CourseTitle'])) {
-            return null;
-        }
-
         $courseTitle = $row['CourseTitle'];
-
         if (!empty(static::$courseNameMappings[$courseTitle])) {
             $courseTitle = static::$courseNameMappings[$courseTitle];
         }
 
-        if (!$Course = Course::getByField('Title', $courseTitle)) {
+        if ($Course = Course::getByCode($row['CourseCode'])) {
+            return $Course;
+        } else if ($Course = Course::getByField('Title', $courseTitle)) {
+            return $Course;
+        } else if (!empty($Job->Config['autoCreateCourse'])) {
+            return Course::create([
+                'Code' => $row['CourseCode'],
+                'Title' => $courseTitle ?: $row['CourseCode'],
+                'Department' => !empty($row['DepartmentTitle']) ? Department::getOrCreateByTitle($row['DepartmentTitle']) : null
+            ]);
+        } else {
             throw new RemoteRecordInvalid(
                 'course-not-found',
                 'course not found for title: '.$courseTitle,
@@ -272,7 +253,6 @@ class Connector extends \Slate\Connectors\AbstractSpreadsheetConnector implement
             );
         }
 
-        return $Course;
     }
 
     protected static function _readEnrollment(IJob $Job, array $row)

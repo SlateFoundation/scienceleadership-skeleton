@@ -1,0 +1,17 @@
+{
+  "id": "9138aea3-3d4a-4cb4-ba09-22c9d23a836c",
+  "hash": "855d606d5c885e9fb8ada4f58a39c4f78ebd5219",
+  "js": [{ "path": "app.js" }],
+  "css": [
+    {
+      "remote": false,
+      "exclude": ["fashion"],
+      "path": "resources/SlateStandardsBasedGradingTeacher-all_1.css"
+    },
+    {
+      "remote": false,
+      "exclude": ["fashion"],
+      "path": "resources/SlateStandardsBasedGradingTeacher-all_2.css"
+    }
+  ]
+}

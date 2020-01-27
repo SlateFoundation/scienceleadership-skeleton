@@ -1,3 +1,3 @@
 <?php
 
-SlateAdmin\WebApp::$plugins[] = 'scienceleadership-interims';
+SlateAdmin\WebApp::$plugins[] = 'scienceleadership-interims-admin';
