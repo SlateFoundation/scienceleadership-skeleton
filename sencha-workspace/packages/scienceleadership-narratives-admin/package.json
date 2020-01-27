@@ -1,0 +1,39 @@
+{
+    "name": "scienceleadership-narratives-admin",
+    "sencha": {
+        "version": "1.0.0",
+        "namespace": "ScienceLeadership.narratives",
+        "type": "code",
+        "framework": "ext",
+        "toolkit": "classic",
+        "theme": "theme-neptune",
+        "requires": [
+            "slate-sbg-admin"
+        ],
+        "classpath": [
+            "${package.dir}/src"
+        ],
+        "overrides": [
+            "${package.dir}/overrides"
+        ],
+        "sass": {
+            "namespace": "ScienceLeadership.narratives",
+            "etc": [
+                "${package.dir}/sass/etc/all.scss"
+            ],
+            "var": [
+                "${package.dir}/sass/var",
+                "${workspace.dir}/../site-root/sass/_variables-all.scss"
+            ]
+        },
+        "compressor": {
+            "polyfills": "none"
+        },
+        "output": {
+            "base": "${package.dir}/build",
+            "js": {
+                "version": "ES6"
+            }
+        }
+    }
+}
