@@ -44,6 +44,7 @@ jobs:
         curl -X POST \
           --silent \
           --fail \
+          --show-error \
           -H "Authorization: Token ${VFS_DEV_TOKEN}" \
           -H "Accept: application/json" \
           "http://skeleton.sla.slatepowered.net/site-admin/sources/scienceleadership-skeleton/pull?fetch=true" \
@@ -53,6 +54,7 @@ jobs:
         curl -X POST \
           --silent \
           --fail \
+          --show-error \
           -H "Authorization: Token ${VFS_DEV_TOKEN}" \
           -H "Accept: application/json" \
           "http://skeleton.sla.slatepowered.net/site-admin/sources/scienceleadership-skeleton/sync-to-vfs" \
