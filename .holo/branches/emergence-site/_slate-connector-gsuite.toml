@@ -1,5 +1,2 @@
 [holomapping]
-holosource="=>emergence-layer"
-files = [
-    "*/**"
-]
+files = "**"
