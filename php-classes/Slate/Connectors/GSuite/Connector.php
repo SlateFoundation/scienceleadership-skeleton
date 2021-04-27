@@ -112,14 +112,16 @@ class Connector extends AbstractConnector implements ISynchronize
         // get existing users and map by email address
         $googleUsers = [];
         $googleIds = [];
+        $googleEmails = [];
 
         foreach (API::getAllUsers(['fields' => 'users(id,name,primaryEmail)']) AS $googleUser) {
             $googleUsername = strstr($googleUser['primaryEmail'], '@', true);
             $googleUsers[$googleUsername] = $googleUser;
             $googleIds[$googleUser['id']] = $googleUsername;
+            $googleEmails[$googleUser['primaryEmail']] = $googleUsername;
         }
 
-        $Job->notice('Loaded {totalUsers} users from Google Apps for analysis', [
+        $Job->notice('Loaded {totalUsers} users from Google Workspace for analysis', [
             'totalUsers' => count($googleUsers)
         ]);
         $results['analyzed']['remote'] = count($googleUsers);
@@ -157,13 +159,19 @@ class Connector extends AbstractConnector implements ISynchronize
             }
 
 
+            // try to match existing remote user by email
+            if ($DomainEmailPoint && !$googleUser && array_key_exists($DomainEmailPoint->address, $googleEmails)) {
+                $googleUser = $googleUsers[$googleEmails[$DomainEmailPoint->address]];
+            }
+
+
             // update existing remote user
             if ($googleUser) {
                 if (!$DomainEmailPoint) {
-                    $Job->error('Cannot update existing remote user {username} because they don\'t have an email contact point matching the domain', [
+                    $Job->debug('Cannot update existing remote user {username} because they don\'t have an email contact point matching the domain', [
                         'username' => $User->Username
                     ]);
-                    $results['outcome']['failed']['no-domain-email-contact-point']++;
+                    $results['outcome']['skipped']['existing-user-no-domain-email-contact-point']++;
                     continue;
                 }
 
@@ -205,10 +213,6 @@ class Connector extends AbstractConnector implements ISynchronize
 
                 // log and apply changes
                 if ($changes->hasChanges()) {
-                    // dump([
-                    //     $googleUser['id'],
-                    //     DataUtil::expandDottedKeysToTree($changes->getNewValues())
-                    // ]);
                     if (!$pretend) {
                         try {
                             API::patchUser(
