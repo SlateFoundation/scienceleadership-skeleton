@@ -8,7 +8,7 @@ Git::$repositories['scienceleadership-skeleton'] = [
         'api-docs',
         'console-commands',
         'content-blocks',
-        'cypress',
+        // 'cypress',
         'data-exporters',
         'dwoo-plugins',
         'event-handlers',
