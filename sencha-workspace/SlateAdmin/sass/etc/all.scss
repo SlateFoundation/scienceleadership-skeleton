@@ -1,1 +1,13 @@
 $base-color: #1f83b1;
+
+.x-toolbar.info-bar {
+    background-color: #f5eed6;
+
+    .fa {
+        color: #a88400;
+    }
+}
+
+.fa.fa-sm { // smaller fontawesome icon
+    font-size: .875em;
+}

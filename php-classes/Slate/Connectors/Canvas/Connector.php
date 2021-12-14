@@ -470,6 +470,7 @@ class Connector extends SAML2Connector implements ISynchronize, IIdentityConsume
                 'pseudonym[sis_user_id]' => $User->Username,
                 'communication_channel[type]' => 'email',
                 'communication_channel[address]' => $User->Email,
+                'enable_sis_reactivation' => true,
             ]);
 
             $logger->notice(
@@ -615,7 +616,7 @@ class Connector extends SAML2Connector implements ISynchronize, IIdentityConsume
             }
 
             $studentCanvasId = static::_getCanvasUserID($Ward->ID);
-            $studentCanvasEnrollments = CanvasAPI::getEnrollmentsByUser($studentCanvasId);
+            // $studentCanvasEnrollments = CanvasAPI::getEnrollmentsByUser($studentCanvasId);
 
             $WardEnrollments = SectionParticipant::getAllByWhere([
                 'PersonID' => $Ward->ID,
@@ -916,6 +917,7 @@ class Connector extends SAML2Connector implements ISynchronize, IIdentityConsume
                         'course[start_at]' => $Section->Term->StartDate,
                         'course[end_at]' => $Section->Term->EndDate,
                         'course[sis_course_id]' => $Section->Code,
+                        'enable_sis_reactivation' => true,
                     ]);
 
                     $Job->debug(
@@ -1059,6 +1061,7 @@ class Connector extends SAML2Connector implements ISynchronize, IIdentityConsume
                         'course_section[start_at]' => $Section->Term->StartDate,
                         'course_section[end_at]' => $Section->Term->EndDate,
                         'course_section[sis_section_id]' => $Section->Code,
+                        'enable_sis_reactivation' => true,
                     ]);
 
                     $Job->debug(
