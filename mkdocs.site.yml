@@ -1,0 +1,7 @@
+site_name: SLA Docs
+site_url: https://slatefoundation.github.io/scienceleadership-skeleton
+
+theme:
+  palette:
+    primary: "cyan"
+    accent: "orange"

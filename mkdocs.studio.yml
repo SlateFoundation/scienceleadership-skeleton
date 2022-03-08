@@ -1,0 +1,7 @@
+extra:
+  studio:
+    name: sla-studio
+    web_port: 5520
+    static_port: 5521
+    docs_port: 5528
+    mysql_port: 5526

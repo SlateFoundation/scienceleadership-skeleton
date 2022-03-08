@@ -1,0 +1,6 @@
+repo_url: https://github.com/SlateFoundation/scienceleadership-skeleton
+
+extra:
+  repository:
+    name: slate-cbl
+    url: git@github.com:SlateFoundation/scienceleadership-skeleton.git
