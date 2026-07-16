@@ -1,7 +1,10 @@
 [holomapping]
 holosource = "=>emergence-skeleton"
+# "**" (not "*/**") so skeleton-v3's top-level composer.json — which pulls
+# emergence/php-core as a Composer dependency — survives into this
+# skeleton's projection
 files = [
-    "*/**",
+    "**",
     "!php-config/Git.config.d/"
 ]
 before = "*"
