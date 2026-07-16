@@ -1,9 +1,0 @@
-name: format
-in: query
-description: Desired file format for response body
-schema:
-  type: string
-  enum:
-  - html
-  - json
-  - csv

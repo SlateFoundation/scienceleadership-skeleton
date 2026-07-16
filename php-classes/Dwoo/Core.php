@@ -1370,7 +1370,7 @@ class Dwoo_Core
         }
         unset($varstr);
 
-        while (list($k, $sep) = each($m[1])) {
+        foreach ($m[1] as $k => $sep) {
             if ($sep === '.' || $sep === '[' || $sep === '') {
                 // strip enclosing quotes if present
                 $m[2][$k] = preg_replace('#^(["\']?)(.*?)\1$#', '$2', $m[2][$k]);
@@ -1381,8 +1381,8 @@ class Dwoo_Core
                     return null;
                 }
             } else {
-                if (is_object($data) && ($safeRead === false || isset($data->$m[2][$k]))) {
-                    $data = $data->$m[2][$k];
+                if (is_object($data) && ($safeRead === false || isset($data->{$m[2][$k]}))) {
+                    $data = $data->{$m[2][$k]};
                 } else {
                     return null;
                 }
@@ -1545,7 +1545,7 @@ class Dwoo_Core
             $cur = $this->scope;
         }
 
-        while (list($k, $sep) = each($m[1])) {
+        foreach ($m[1] as $k => $sep) {
             if ($sep === '.' || $sep === '[' || $sep === '') {
                 if ((is_array($cur) || $cur instanceof ArrayAccess) && isset($cur[$m[2][$k]])) {
                     $cur = $cur[$m[2][$k]];
@@ -1554,7 +1554,7 @@ class Dwoo_Core
                 }
             } elseif ($sep === '->') {
                 if (is_object($cur)) {
-                    $cur = $cur->$m[2][$k];
+                    $cur = $cur->{$m[2][$k]};
                 } else {
                     return null;
                 }
@@ -1594,7 +1594,7 @@ class Dwoo_Core
                 array_pop($m[2])
             );
 
-            while (list($k, $sep) = each($m[1])) {
+            foreach ($m[1] as $k => $sep) {
                 if ($sep === '.' || $sep === '[' || $sep === '') {
                     if (is_array($cur) === false) {
                         $cur = array();
@@ -1604,7 +1604,7 @@ class Dwoo_Core
                     if (is_object($cur) === false) {
                         $cur = new stdClass();
                     }
-                    $cur = &$cur->$m[2][$k];
+                    $cur = &$cur->{$m[2][$k]};
                 } else {
                     return false;
                 }
@@ -1619,7 +1619,7 @@ class Dwoo_Core
                 if (is_object($cur) === false) {
                     $cur = new stdClass();
                 }
-                $cur->$last[1] = $value;
+                $cur->{$last[1]} = $value;
             }
         }
 

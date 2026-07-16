@@ -40,7 +40,9 @@ class Dwoo_Plugin_if extends Dwoo_Block_Plugin implements Dwoo_ICompilable_Block
         $p = array();
 
         reset($params);
-        while (list($k, $v) = each($params)) {
+        while (null !== ($k = key($params))) { // each()-equivalent: advance pointer before body (body uses next($params) for lookahead)
+            $v = current($params);
+            next($params);
             $v = (string) $v;
             if (substr($v, 0, 1) === '"' || substr($v, 0, 1) === '\'') {
                 $vmod = strtolower(substr($v, 1, -1));

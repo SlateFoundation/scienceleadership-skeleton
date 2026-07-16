@@ -1,5 +1,0 @@
-name: offset
-in: query
-description: Number of records to skip for current page
-schema:
-  type: integer

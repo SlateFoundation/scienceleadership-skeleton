@@ -1,8 +1,0 @@
-name: dir
-in: query
-description: Used with the `sort` parameter to set the direction to order
-schema:
-  type: string
-  enum:
-  - ASC
-  - DESC

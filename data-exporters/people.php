@@ -1,5 +1,7 @@
 <?php
 
+use Emergence\People\Person;
+
 return [
     'title' => 'People',
     'description' => 'Each row represents an individual person tracked in the database',
@@ -9,11 +11,7 @@ return [
         'FirstName' => 'First Name',
         'LastName' => 'Last Name'
     ],
-    'readQuery' => function (array $input) {
-        $query = [];
-
-        return $query;
-    },
+    'readQuery' => fn (array $input) => [],
     'buildRows' => function (array $query = [], array $config = []) {
 
         // build rows

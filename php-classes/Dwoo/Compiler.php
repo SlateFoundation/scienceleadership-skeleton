@@ -1941,13 +1941,13 @@ class Dwoo_Compiler implements Dwoo_ICompiler
                 if ($func === 'tif') {
                     $params[] = $tokens;
                 }
-                $output = call_user_func_array($funcCompiler, $params);
+                $output = call_user_func_array($funcCompiler, array_values($params));
             } else {
                 if ($pluginType & Dwoo_Core::CUSTOM_PLUGIN) {
                     $callback = $this->customPlugins[$func]['callback'];
                     if ($callback instanceof \Closure) {
                         array_unshift($params, $this->getDwoo());
-                        $output = call_user_func_array($callback, $params);
+                        $output = call_user_func_array($callback, array_values($params));
                     } else {
                         array_unshift($params, '$this');
                         $params = self::implode_r($params);
@@ -1979,7 +1979,7 @@ class Dwoo_Compiler implements Dwoo_ICompiler
                     $funcCompiler = array('Dwoo_Plugin_'.$func, 'compile');
                     array_unshift($params, $this);
                 }
-                $output = call_user_func_array($funcCompiler, $params);
+                $output = call_user_func_array($funcCompiler, array_values($params));
             } else {
                 $params = self::implode_r($params);
                 if ($pluginType & Dwoo_Core::CUSTOM_PLUGIN) {
@@ -2690,7 +2690,7 @@ class Dwoo_Compiler implements Dwoo_ICompiler
         }
 
         $breaker = false;
-        while (list($k, $char) = each($breakChars)) {
+        foreach ($breakChars as $k => $char) {
             $test = strpos($substr, $char);
             if ($test !== false && $test < $end) {
                 $end = $test;
@@ -3037,7 +3037,7 @@ class Dwoo_Compiler implements Dwoo_ICompiler
                             $funcCompiler = 'Dwoo_Plugin_'.$func.'_compile';
                         }
                         array_unshift($params, $this);
-                        $output = call_user_func_array($funcCompiler, $params);
+                        $output = call_user_func_array($funcCompiler, array_values($params));
                     } else {
                         array_unshift($params, '$this');
 
@@ -3071,7 +3071,7 @@ class Dwoo_Compiler implements Dwoo_ICompiler
                             $funcCompiler = array('Dwoo_Plugin_'.$func, 'compile');
                             array_unshift($params, $this);
                         }
-                        $output = call_user_func_array($funcCompiler, $params);
+                        $output = call_user_func_array($funcCompiler, array_values($params));
                     } else {
                         $params = self::implode_r($params);
 
@@ -3264,7 +3264,7 @@ class Dwoo_Compiler implements Dwoo_ICompiler
         }
 
         // loops over the param map and assigns values from the template or default value for unset optional params
-        while (list($k, $v) = each($map)) {
+        foreach ($map as $k => $v) {
             if ($v[0] === '*') {
                 // "rest" array parameter, fill every remaining params in it and then break
                 if (count($ps) === 0) {

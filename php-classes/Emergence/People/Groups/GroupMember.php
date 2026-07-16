@@ -3,65 +3,66 @@
 namespace Emergence\People\Groups;
 
 use ActiveRecord;
+use Emergence\People\Person;
 
 class GroupMember extends ActiveRecord
 {
     // ActiveRecord configuration
     public static $tableName = 'group_members';
 
-    public static $fields = array(
-        'GroupID' => array(
+    public static $fields = [
+        'GroupID' => [
             'type' => 'integer'
             ,'unsigned' => true
-        )
-        ,'PersonID' => array(
+        ]
+        ,'PersonID' => [
             'type' => 'integer'
             ,'unsigned' => true
-        )
-        ,'Role' => array(
+        ]
+        ,'Role' => [
             'type' => 'enum'
-            ,'values' => array('Member', 'Administrator', 'Owner', 'Founder')
-        )
-        ,'Rank' => array(
+            ,'values' => ['Member', 'Administrator', 'Owner', 'Founder']
+        ]
+        ,'Rank' => [
             'type' => 'integer'
             ,'unsigned' => true
             ,'notnull' => false
-        )
-        ,'Title' => array(
+        ]
+        ,'Title' => [
             'type' => 'string'
             ,'notnull' => false
-        )
-        ,'Joined' => array(
+        ]
+        ,'Joined' => [
             'type' => 'timestamp'
             ,'default' => null
-        )
-        ,'Expires' => array(
+        ]
+        ,'Expires' => [
             'type' => 'timestamp'
             ,'notnull' => false
-        )
-    );
+        ]
+    ];
 
-    public static $relationships = array(
-        'Person' => array(
+    public static $relationships = [
+        'Person' => [
             'type' => 'one-one'
-            ,'class' => 'Person'
-        )
-        ,'Group' => array(
+            ,'class' => Person::class
+        ]
+        ,'Group' => [
             'type' => 'one-one'
-            ,'class' => 'Emergence\People\Groups\Group'
-        )
-    );
+            ,'class' => \Emergence\People\Groups\Group::class
+        ]
+    ];
 
-    public static $indexes = array(
-        'GroupPerson' => array(
-            'fields' => array('GroupID', 'PersonID')
+    public static $indexes = [
+        'GroupPerson' => [
+            'fields' => ['GroupID', 'PersonID']
             ,'unique' => true
-        )
-    );
+        ]
+    ];
 
-    public static $dynamicFields = array(
+    public static $dynamicFields = [
         'Group'
-    );
+    ];
 
     public function save($deep = true)
     {

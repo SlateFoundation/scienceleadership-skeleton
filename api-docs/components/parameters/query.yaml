@@ -1,5 +1,0 @@
-name: q
-in: query
-description: Keyword search query
-schema:
-  type: string
