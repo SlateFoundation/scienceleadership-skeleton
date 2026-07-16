@@ -1,3 +1,7 @@
+# PHP-8 Slate: develop composes on EmergencePlatform/skeleton-v3 (PHP 8.3)
+# instead of skeleton-v2 (SlateFoundation/slate#370). Pinned to the branch
+# head during the PHP-8 migration; repin to a release tag once Slate cuts
+# one from the skeleton-v3 line.
 [holosource]
 url = "https://github.com/SlateFoundation/slate"
-ref = "refs/tags/v2.21.5"
+ref = "refs/heads/develop"
