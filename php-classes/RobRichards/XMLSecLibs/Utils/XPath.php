@@ -7,7 +7,10 @@ class XPath
     const ALPHANUMERIC = '\w\d';
     const NUMERIC = '\d';
     const LETTERS = '\w';
-    const EXTENDED_ALPHANUMERIC = '\w\d\s\-_:\.';
+    const EXTENDED_ALPHANUMERIC = '-\w\d\s_:\.';
+
+    /* Attribute names only — no whitespace or XPath operators. */
+    const EXTENDED_ALPHANUMERIC_STRICT = '-\w\d_:\.';
 
     const SINGLE_QUOTE = '\'';
     const DOUBLE_QUOTE = '"';
@@ -37,7 +40,7 @@ class XPath
      *
      * @return string The filtered attribute name.
      */
-    public static function filterAttrName($name, $allow = self::EXTENDED_ALPHANUMERIC)
+    public static function filterAttrName($name, $allow = self::EXTENDED_ALPHANUMERIC_STRICT)
     {
         return preg_replace('#[^'.$allow.']#', '', $name);
     }
