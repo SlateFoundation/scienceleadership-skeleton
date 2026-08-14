@@ -1,0 +1,6 @@
+# PhilaSD district SSO SP connector (routes /connectors/district-sso — the
+# frozen registered path). Pinned to the branch head until the connector
+# cuts its first release tag; repin to a tag then.
+[holosource]
+url = "https://github.com/SlateFoundation/slate-connector-philasd-sso"
+ref = "refs/heads/main"
