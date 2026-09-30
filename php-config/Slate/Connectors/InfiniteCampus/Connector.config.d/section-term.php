@@ -18,6 +18,15 @@ Slate\Connectors\InfiniteCampus\Connector::$getSectionTerm = function (
             $termHandle = 'y' . $year;
             break;
         case 2:
+            if (!is_numeric($row['TermLastQuarter'] ?? null)) {
+                throw new RemoteRecordInvalid(
+                    'term-last-quarter-invalid',
+                    sprintf('TermLastQuarter must be numeric for a semester section, got "%s"', $row['TermLastQuarter'] ?? ''),
+                    $row,
+                    $row['TermLastQuarter'] ?? null
+                );
+            }
+
             $termHandle = 's' . $year . '-' . $row['TermLastQuarter']/2;
             break;
         case 1:
